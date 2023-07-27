@@ -11068,13 +11068,13 @@ body {
   width: 100%;
   height: 30%;
   min-height: 35rem;
-  padding: 15rem 0;
+  padding: 0rem 0;
   background:  url("../assets/img/bg-masthead.png");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
-  /* background-size: cover; */
-  background-color: black;
+  background-size: cover;
+  /* background-color: black; */
 
   /* linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%),  */
 }
