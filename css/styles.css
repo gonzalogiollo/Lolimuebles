@@ -11079,7 +11079,7 @@ body {
   /* linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%),  */
 }
 
-.whatsapp {
+.whatsapp- {
   position: fixed;
   width: 60px;
   height: 60px;
@@ -11094,7 +11094,10 @@ body {
 }
 
 .whatsapp-icon {
-  margin-top: 13px;
+  width: 34px;
+  height: auto;
+  padding-top: 7px;
+  padding-left: 2px;
 }
 
 
