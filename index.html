@@ -124,7 +124,8 @@
                         <!-- https://startbootstrap.com/solution/contact-forms-->
                         <!-- to get an API token!-->
                             
-                            <form action="" method="post" role="form" class="contactForm">
+                            <form id="fcf-form-id" class="form-signup" method="post" action="">
+
                             <!-- Email address input-->
                             <div class="row input-group-newsletter">
                                 <div class="col"><input class="form-control form-group"  type="email" id="email" name="email" placeholder="Email o telefono..." aria-label="Email o telefono..." /></div>
@@ -202,10 +203,47 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+       
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+        <!-- script envio de mail -->
+        <script>
+            // Función para enviar el formulario
+            function enviarFormulario(event) {
+              event.preventDefault(); // Evitar el envío del formulario por defecto
+          
+              // Obtener los datos del formulario
+              const email = document.getElementById('Email').value;
+          
+              // Realizar la solicitud de envío del correo al servidor
+              fetch('contact.php', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email: email }),
+              })
+                .then(response => response.json())
+                .then(data => {
+                  // Mostrar mensaje de éxito o error según la respuesta del servidor
+                  if (data.success) {
+                    document.getElementById('submitSuccessMessage').classList.remove('d-none');
+                    document.getElementById('submitErrorMessage').classList.add('d-none');
+                    document.getElementById('submitButton').disabled = true;
+                  } else {
+                    document.getElementById('submitErrorMessage').classList.remove('d-none');
+                    document.getElementById('submitSuccessMessage').classList.add('d-none');
+                  }
+                })
+                .catch(error => {
+                  console.error('Error al enviar el formulario:', error);
+                  document.getElementById('submitErrorMessage').classList.remove('d-none');
+                  document.getElementById('submitSuccessMessage').classList.add('d-none');
+                });
+            }
+          
+            // Agregar el evento de envío del formulario
+            document.getElementById('fcf-form-id').addEventListener('submit', enviarFormulario);
+          </script>
     </body>
 </html>
